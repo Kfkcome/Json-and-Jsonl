@@ -1,55 +1,51 @@
 <script setup>
 import { ref } from "vue";
 
-import hello from "./component/helloworld.vue";
-import mainView from "./component/MainView.vue";
-
-
 
 </script>
 
-<template>
-  <div>
-    <!-- <h1>Welcome to your Vue 3 + Vite + Tauri app</h1> -->
-    <!-- <hello /> -->
-    
+<template >
     <!-- <mainView /> -->
-     <div data-tauri-drag-region class ="header">
-      <h1 class="welcome-message">Json View Tool</h1>
-     </div>
+    <div class="app-container">
+      
+      <div data-tauri-drag-region class="header">
+        <h1 data-tauri-drag-region class="welcome-message">Json View Tool</h1>
+        <!-- <h2>file name</h2> todo: -->
+      </div>
   </div>
 </template>
 
 <style scoped>
+.app-container {
+position: fixed;
+height: 100%;
+width: 100%;
+top: 0;
+left: 0;
+/* transition: all 0.9s ease; */
+}
 .header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f5f5f5; /*TODO: 实现动态颜色变化 */
+  background-color: #be4545; /*TODO: 实现动态颜色变化 */
   /* border-bottom: 1px solid #e0e0e0; */
   margin-top: -10px;
-  margin-left: -10px;
-  margin-right: -10px;
-  width: 110%;
-  box-sizing: border-box;
+  padding: 5px;
+  width: 100%;
+
 }
+
+
 .welcome-message {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-app-region: no-drag;
+  cursor: default;
   text-align: left;
-  margin-top: 10px;
-  margin-left: 100px;
-  font-size: 24px;
-  color: #333;
+  margin-top: 15px;
+  margin-left: 80px;
+  font-size: 20px;
+  color: #333333;
 }
-#custom-window {
-  -webkit-app-region: drag;
-  /* 使得这部分可以被拖动 */
-  background-color: rgba(255, 255, 255, 0.95);
-  /* 透明背景 */
-  border-radius: 12px;
-  /* 设置圆角效果 */
-  width: 800px;
-  height: 600px;
-  /* overflow: hidden; */
-}
+
 </style>
 
