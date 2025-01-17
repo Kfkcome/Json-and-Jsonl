@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.tauri.app/config/2",
+    "productName": "test2",
+    "version": "0.1.0",
+    "identifier": "test2",
+    "app": {
+        "enableGTKAppId": false,
+        "macOSPrivateApi": true,
+        "security": {
+            "assetProtocol": {
+                "enable": false,
+                "scope": []
+            },
+            "capabilities": [],
+            "dangerousDisableAssetCspModification": false,
+            "freezePrototype": false,
+            "pattern": {
+                "use": "brownfield"
+            }
+        },
+        "windows": [
+            {
+                "decorations": true,
+                "hiddenTitle": true,
+                "title": "test2",
+                "width": 800,
+                "height": 600,
+                "transparent": false
+            }
+        ],
+        "withGlobalTauri": false
+    }
+}
