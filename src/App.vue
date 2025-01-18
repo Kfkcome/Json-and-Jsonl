@@ -1,17 +1,23 @@
 <script setup>
 import { ref } from "vue";
-
-
+import MainView from "./component/MainView.vue";
+import test from "./component/test.vue";
 </script>
 
 <template >
     <!-- <mainView /> -->
+    
     <div class="app-container">
       
       <div data-tauri-drag-region class="header">
         <h1 data-tauri-drag-region class="welcome-message">Json View Tool</h1>
         <!-- <h2>file name</h2> todo: -->
       </div>
+    <!-- <div style="position: relative;"> -->
+      <!-- <test /> -->
+    <!-- </div> -->
+      <!--  -->
+      <MainView />
   </div>
 </template>
 
