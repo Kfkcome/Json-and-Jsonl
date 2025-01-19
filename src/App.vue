@@ -40,6 +40,7 @@ left: 0;
   color: white;
   text-align: center;
   height: 30px;
+  overflow: hidden;
   /* padding: 4px; */
 }
 .footer-item {
@@ -48,6 +49,7 @@ left: 0;
   left: 20px;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 .header {
   position: fixed;
@@ -71,7 +73,8 @@ left: 0;
   -webkit-app-region: no-drag;
   cursor: default;
   /* text-align: left; */
-  color: #333333;
+  color: #ffffff;
+  overflow: hidden;
 }
 
 </style>

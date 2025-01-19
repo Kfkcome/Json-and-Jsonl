@@ -27,8 +27,8 @@ const initWidth = ref([window.innerWidth / 3, window.innerWidth / 3, window.inne
 
 const isDragging = ref(false)
 
-const minWidth = window.innerWidth / 6
-const maxWidth = window.innerWidth - minWidth
+const minWidth = ref(window.innerWidth / 6)
+const maxWidth = ref(window.innerWidth - minWidth.value)
 
 const index = ref(0)
 
@@ -59,7 +59,7 @@ const doDrag = (e: MouseEvent) => {
         const newWidth = startWidth.value + e.clientX - startX.value
         // 如果新宽度不等于最大宽度，则更新宽度值
         // if (newWidth !== maxWidth) {
-            initWidth.value[index.value] = clamp(newWidth, minWidth, maxWidth) // 使用 clamp 函数限制宽度值在最小值和最大值之间
+            initWidth.value[index.value] = clamp(newWidth, minWidth.value, maxWidth.value) // 使用 clamp 函数限制宽度值在最小值和最大值之间
         // }
         tuneWidth()
     })
@@ -84,8 +84,9 @@ const tuneWidth = () => {
 
 window.addEventListener('resize', () => {
     const totalWidth = window.innerWidth
+    minWidth.value = totalWidth / 6
     initWidth.value = [totalWidth / 3, totalWidth / 3, totalWidth / 3]
-    tuneWidth()
+    // tuneWidth()
 })
 
 </script>
@@ -107,6 +108,7 @@ window.addEventListener('resize', () => {
     cursor: ew-resize;
     z-index: 9999;
     background: transparent;
+    overflow: visible;
 }
 
 .colomnItem {
@@ -124,8 +126,8 @@ window.addEventListener('resize', () => {
     flex-basis: 0;
     border: 1px solid black;
     /* resize: horizontal; */
-    min-width: 100px;
-    overflow: auto;
+    /* min-width: 100px; */
+    /* overflow: auto; */
 }
 
 </style>
