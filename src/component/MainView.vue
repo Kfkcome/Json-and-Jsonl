@@ -34,7 +34,8 @@ const index = ref(0)
 
 /** 定义一个函数，用于将数值限制在指定的最小值和最大值之间 */
 const clamp = (value: number, min: number, max: number) => {
-    return Math.min(Math.max(value, min), max) // 使用 Math.min 和 Math.max 函数来限制数值范围
+    return Math.max(min,value)
+    // return Math.min(Math.max(value, min), max) // 使用 Math.min 和 Math.max 函数来限制数值范围
 }
 
 const initDrag = (e: MouseEvent, num: number) => {
@@ -57,9 +58,9 @@ const doDrag = (e: MouseEvent) => {
         // 计算新的宽度
         const newWidth = startWidth.value + e.clientX - startX.value
         // 如果新宽度不等于最大宽度，则更新宽度值
-        if (newWidth !== maxWidth) {
+        // if (newWidth !== maxWidth) {
             initWidth.value[index.value] = clamp(newWidth, minWidth, maxWidth) // 使用 clamp 函数限制宽度值在最小值和最大值之间
-        }
+        // }
         tuneWidth()
     })
 }
@@ -90,21 +91,16 @@ window.addEventListener('resize', () => {
 </script>
 
 <style lang="css" scoped>
-.resizable {
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    background: var(--center-bg-color);
-    transition-property: all;
-}
 
 .colomnContainer {
-    resize: horizontal;
+    /* flex:1; */
+    position: fixed;
+    bottom: 30px;
     display: flex;
     flex-direction: row;
-    height: 100%;
+    width: 100%;
+    height: calc(100% - 80px); /* Adjust the height to not cover the bottom bar */
 }
-
 .resize-handle {
     /* flex: 2; */
     width: 3px;
@@ -114,12 +110,12 @@ window.addEventListener('resize', () => {
 }
 
 .colomnItem {
-    resize: horizontal;
+    /* resize: horizontal; */
     flex-basis: 1;
     display: flex;
     flex-direction: row;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .rowLayout {
@@ -127,7 +123,7 @@ window.addEventListener('resize', () => {
     flex-shrink: 1;
     flex-basis: 0;
     border: 1px solid black;
-    resize: horizontal;
+    /* resize: horizontal; */
     min-width: 100px;
     overflow: auto;
 }
